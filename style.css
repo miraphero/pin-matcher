@@ -104,7 +104,6 @@ color: #E0B612;
     color: #FF3C5F;
     margin-top: 10px;
 }
-
-#pin-positive, #pin-negative{
+#pin-negative , #pin-positive{
     display: none;
 }

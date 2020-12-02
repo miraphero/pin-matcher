@@ -13,7 +13,7 @@
             <div class="col-md-6">
                 <div class="pin-generator half-width">
                     
-                    <input class="form-control" id="generatePinNumber" type="text">
+                    <input class="form-control" id="displayGenerator" type="text">
                     <button class="generate-btn" onclick="pinGenerator()" >Generate Pin</button>
                 </div>
             </div>
@@ -40,13 +40,13 @@
                           <div class="button" onclick="document.calc.txt.value +='3'">3</div>
                         </div>
                         <div class="calc-button-row">
-                            <!-- calling a function for backspace -->
+                            
                             <div class="button" onclick="back()"><</div>
                             <div class="button" onclick="document.calc.txt.value +='0'">0</div>
                             <div class="button" onclick="document.calc.txt.value =''">C</div>
                         </div>
                         <div>
-                            <!-- i changed the button type submit to button, because it was reloading the page by clicking the submit button -->
+                            
                             <button type="button" class="submit-btn" id="submitBtn" onclick="pinMatcher()">Submit</button>
                             <p class="action-left">3 try left</p>
                         </div>
@@ -61,37 +61,34 @@
         </div>
     </div>
     <script>
-        //  random pin generator
+        //   pin generator
         function pinGenerator(){
-            //  get the element and then get the value, then set it to whatever you need..
-            document.getElementById("generatePinNumber").value = Math.floor(1000 + Math.random() * 9000);
+            
+            document.getElementById("displayGenerator").value = Math.floor(1000 + Math.random() * 9000);
         }
 
 
         // pin matching function
         function pinMatcher() {
-            const randomPin = document.getElementById("generatePinNumber").value;
+            const randomPin = document.getElementById("displayGenerator").value;
             const userPin = document.getElementById("user-pin-input").value;
-            // if the user enters nothing, it will show an alert
             if (userPin == "") {
                 alert("you pressed the submit button without entering your pin. please enter your four digit number");
-                document.getElementById('pin-success').style.display = 'none';
-                document.getElementById('pin-failed').style.display = 'none';
+                document.getElementById('pin-positive').style.display = 'none';
+                document.getElementById('pin-negative').style.display = 'none';
             }
-            // if the user enters the pin correctly it will show(✅ Pin Matched... Secret door is opening for you)
             else if (randomPin == userPin) {
-                document.getElementById('pin-success').style.display = 'block';
-                document.getElementById('pin-failed').style.display = 'none';
+                document.getElementById('pin-positive').style.display = 'block';
+                document.getElementById('pin-negative').style.display = 'none';
             }
-            // if the user enters the pin wrong it will show(❌ Pin Didn't Match, Please try again)
             else{
-                document.getElementById('pin-success').style.display = 'none';
-                document.getElementById('pin-failed').style.display = 'block';
+                document.getElementById('pin-positive').style.display = 'none';
+                document.getElementById('pin-negative').style.display = 'block';
             }
         }
 
 
-        // function for the backspace on the calculator which is the (<) symbol
+        
         function back() {
         var value = document.getElementById("user-pin-input").value;
         document.getElementById("user-pin-input").value = value.substr(0, value.length - 1);

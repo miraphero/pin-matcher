@@ -58,7 +58,8 @@
     <script>
          // generating pin randomly
          function pinGenerator(){
-          document.getElementById("displayGenerator").value=Math.floor(1000+Math.random()* 9000);
+          const pin = Math.floor(1000+ Math.random() * 9000);
+          document.getElementById('displayGenerator').value = pin
         }
         // pin matching function
         function pinMatcher(){
